@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <h1>Login Page</h1>
+    <form id="login-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <br>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
+      <br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+
+    <script>
+      const loginForm = document.querySelector('#login-form');
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.querySelector('#name').value;
+        const phone = document.querySelector('#phone').value;
+        const email = document.querySelector('#email').value;
+        localStorage.setItem('name', name);
+        localStorage.setItem('phone', phone);
+        localStorage.setItem('email', email);
+        window.location.href = 'home.html';
+      });
+    </script>
+  </body>
+</html>

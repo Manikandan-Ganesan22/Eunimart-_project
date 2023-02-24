@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Detailed View Page</title>
+    <link rel="stylesheet" href="detail.css">
+  </head>
+  <body>
+    <h1>Detailed View Page</h1>
+    <p id="user-details"></p>
+
+    <script>
+      const userDetails = document.querySelector('#user-details');
+      const userId = new URLSearchParams(window.location.search).get('userId');
+
+      fetch(`https://reqres.in/api/users/${userId}`)
+        .then(response => response.json())
+        .then(data => {
+          const user = data.data;
+          userDetails.textContent = `Name: ${user.first_name} ${user.last_name}\nEmail: ${user.email}\nAvatar: ${user.avatar}`;
+        })
+        .catch(error => console.error(error));
+    </script>
+  </body>
+</html>
